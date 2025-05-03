@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.log
+*.gguf
+*.bin
+*.pt
+.DS_Store
+*.pyc
+*.pkl
+*.zip
