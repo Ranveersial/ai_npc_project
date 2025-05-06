@@ -54,16 +54,17 @@ def generate_dialogue(player_input: str) -> str:
     )
 
     # Use last 3 exchanges for context
-    recent_history = conversation_memory[-6:]
+    recent_history = conversation_memory[-4:]
     full_prompt = system_prompt + janitor_memory + few_shot + "\n" + "\n".join(recent_history) + "\nJanitor:"
 
     # Generate response
     response = llm(
-        full_prompt,
-        max_tokens=100,
-        stop=["Player:", "Janitor:"],
-        echo=False
-    )
+    full_prompt,
+    max_tokens=30,  # 🔻 Reduce token length = faster
+    stop=["Player:", "Janitor:"],
+    echo=False
+)
+
     reply = response["choices"][0]["text"].strip()
 
     # Repeat protection with fallback
