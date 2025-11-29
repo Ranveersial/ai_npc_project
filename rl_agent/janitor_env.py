@@ -6,11 +6,11 @@ class JanitorTrustEnv(gym.Env):
     def __init__(self):
         super(JanitorTrustEnv, self).__init__()
 
-        # Action space: 0 = Answer A, 1 = Answer B, 2 = Answer C
+        
         self.action_space = spaces.Discrete(3)
 
         # Observation: [confidence, memory_flag]
-        # confidence ∈ [0.0, 1.0] (float), memory_flag ∈ [0, 1] (int)
+        # confidence[0.0, 1.0] (float), memory_flag [0, 1] (int)
         self.observation_space = spaces.Box(low=np.array([0.0, 0.0]), high=np.array([1.0, 1.0]), dtype=np.float32)
 
         self.correct_answer = None
